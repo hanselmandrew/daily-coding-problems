@@ -1,4 +1,4 @@
-# Day 1
+# Day 1 - Pair Sum Equals K
 
 Given a list of numbers, return whether any two sums to k.
 

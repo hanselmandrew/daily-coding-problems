@@ -1,0 +1,18 @@
+tree serialization - deserialized input and solution
+in order traversal solution
+
+(val, left, right)
+(1 (2 0 0) (3 0 0))
+
+  1
+ / \ 
+2   3
+
+IN-ORDER:
+2, 1, 3
+
+3 options
+- ()
+- integer value
+- val then left pointer then right pointer
+  - 0 is NULL
