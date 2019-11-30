@@ -5,8 +5,9 @@
   printf("%s = %d\n", #var, var);
 
 #define ECHO_INT_ARRAY(var, size) \
+  printf("%s:\n", #var);          \
   for (int i = 0; i < size; i++)  \
-    printf("%s[%d] = %d\n", #var, i, var[i]);
+    printf("  [%03d] = %d\n", i, var[i]);
 
 void calculateProductOfOthers(int *originalValues, int *productOfOthers, int arraySize);
 
@@ -41,7 +42,7 @@ int main()
   calculateProductOfOthers(valueArray, productArray, arraySize);
 
   /* Check out solution against given solution */
-  printf("%15s -> %15s\n", "our solution", "input solution");
+  printf("\n%15s -> %15s\n", "our solution", "input solution");
   for (int i = 0; i < arraySize; i++)
   {
     printf("%15d -> %15d\n", productArray[i], solutionArray[i]);
