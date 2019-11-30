@@ -1,0 +1,7 @@
+input:
+k
+arraySize
+arrayValues
+
+solution:
+true/false
