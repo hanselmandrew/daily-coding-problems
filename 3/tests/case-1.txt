@@ -1,4 +1,4 @@
 begintree
 (1 (2 0 0) (3 0 0))
 endtree
-2 1 3
+1 2 3

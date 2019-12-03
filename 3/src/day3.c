@@ -34,7 +34,7 @@ int parseNodePointer(treeDeserializationInfo_t *info, binaryTreeNode_t **nodePtr
 int main()
 {
   /* Get inputs from stdin */
-  char inputString[] = "(1,  (2,  0,  0),\n (3, 0, 0))";
+  char inputString[] = "( 1, \n  ( 2, \n    ( 3, 0, 0 ), \n    ( 6, 0, 0 )\n  ) ,\n  ( 2,\n    ( 4, 0, 0 ), \n    ( 5, 0, 0 )\n  )\n)";
 
   /* Echo inputs */
   ECHO_STRING(inputString);
