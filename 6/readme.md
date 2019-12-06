@@ -18,7 +18,7 @@ PREV --- NEXT --- XOR
   01 XOR 10   ->  11
 ```
 
-. Shows that the left bit is the same, but the right bit is different. If you have the 
+The first line shows that the left bit is the same (0), but the right bit is different (1). If you have the XOR value, the next value can be calculated with XOR and PREV.
 
 Given that it is a doubly linked list, I would think it could be indexed from the beginning or the end.
 
