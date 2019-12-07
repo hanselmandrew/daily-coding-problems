@@ -181,7 +181,7 @@ void* xorPointers(void* ptr1, void* ptr2)
 void xorList_free(xorList_t* xorList_ptr)
 {
   xorNode_t* currentNode_ptr;
-  xorNode_t* prevNode_ptr;
+  xorNode_t* prevNode_ptr = NULL;
   
   if(xorList_ptr == NULL)
   {
@@ -189,13 +189,13 @@ void xorList_free(xorList_t* xorList_ptr)
   }
 
   currentNode_ptr = xorList_ptr->startNode_ptr;
-  if(currentNode_ptr != NULL)
+  while(currentNode_ptr != NULL)
   {
     xorNode_t* nextXorNode;
     xorNode_t* temp = currentNode_ptr;
     currentNode_ptr = xorPointers(currentNode_ptr->xorPointer, prevNode_ptr);
     prevNode_ptr = temp;
-
+    
     free(prevNode_ptr);
-  }
+  }  
 }
