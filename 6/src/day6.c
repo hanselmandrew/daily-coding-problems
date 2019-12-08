@@ -102,6 +102,23 @@ int main()
     }
   #endif
 
+  #if 1 /* Print values from indexes */
+    printf("List Index Function\n");
+    for(int i = -1; i < numberOfNodes+1; i++)
+    {
+      xorNode_t* node_ptr = xorList_getNodeFromIndex(&xorList, i);
+      if(node_ptr)
+      {
+        printf("  [%03d] -> (%d)\n", i, node_ptr->value);
+      }
+      else
+      {
+        printf("  [%03d] -> Invalid\n", i);
+      }
+    }
+  #endif
+
+  /* Free allocated memory */
   xorList_free(&xorList);
 
   free(nodeValues);
@@ -163,6 +180,37 @@ void xorList_insertStart(xorList_t* xorList_ptr, int value)
 void xorList_insertEnd(xorList_t* xorList_ptr, int value)
 {
   xorList_insertEitherEnd(xorList_ptr, 0, value);
+}
+
+xorNode_t* xorList_getNodeFromIndex(xorList_t* xorList_ptr, int index)
+{
+  xorNode_t* currentNode_ptr;
+  xorNode_t* prevNode_ptr = NULL;
+  int currentIndex = 0;
+
+  if(xorList_ptr == NULL)
+  {
+    return NULL;
+  }
+
+  currentNode_ptr = xorList_ptr->startNode_ptr;
+  while(currentNode_ptr != NULL && currentIndex < index)
+  {
+    xorNode_t* nextXorNode;
+    xorNode_t* temp = currentNode_ptr;
+    currentNode_ptr = xorPointers(currentNode_ptr->xorPointer, prevNode_ptr);
+    prevNode_ptr = temp;
+    currentIndex++;
+  }
+
+  if(currentIndex == index)
+  {
+    return currentNode_ptr;
+  }
+  else
+  {
+    return NULL;
+  }
 }
 
 void* xorPointers(void* ptr1, void* ptr2)
