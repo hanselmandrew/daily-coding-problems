@@ -45,6 +45,7 @@ int numberOfPossibleDecodings(char *inputMessage, int inputMessageLength, char *
   /* If solution to args exists in memoization struct */
   /* return lookup value instead of proceeding */
 
+  /* Base recursive case of message length zero prints the resultant decoded message */
   if (inputMessageLength == 0)
   {
     printf("  %s\n", outputMessage);
@@ -52,17 +53,22 @@ int numberOfPossibleDecodings(char *inputMessage, int inputMessageLength, char *
   }
   else if (inputMessageLength > 0)
   {
+    /* Consider decodings where one digit is used for this character */
     if (inputMessage[0] >= '1' && inputMessage[0] <= '9')
     {
+      /* Add character to string, recurse, remove character from string */
       outputMessage[outputMessageLength] = inputMessage[0] + 48;
       totalDecodingCombinations += numberOfPossibleDecodings(&inputMessage[1], inputMessageLength - 1, outputMessage, outputMessageLength + 1);
       outputMessage[outputMessageLength] = '\0';
 
+      /* Consider decodings where two digits are used for this character */
       if (inputMessageLength > 1)
       {
+        /* Values from 10-26 are valid here */
         if ((inputMessage[0] == '1' && (inputMessage[1] >= '0' && inputMessage[1] <= '9')) ||
             (inputMessage[0] == '2' && (inputMessage[1] >= '0' && inputMessage[1] <= '6')))
         {
+          /* Add character to string, recurse, remove character from string */
           outputMessage[outputMessageLength] =
               96 + ((inputMessage[0] - 48) * 10) +
               (inputMessage[1] - 48);
